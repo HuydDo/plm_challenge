@@ -4,14 +4,15 @@ import _ from 'lodash';
 
 /** 
 * TODO:  2. Adding a class of "error" to a row will highlight it red. Provide this visual feedback on rows which have duplicate ranks selected. 
-* TODO: 3. There is a place to display an error message near the submit button. Show this error message: `Ranks must be unique` whenever the user has selected the same rank on multiple rows.
+* * 3. There is a place to display an error message near the submit button. Show this error message: `Ranks must be unique` whenever the user has selected the same rank on multiple rows.
 */
 
 class FormRow extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      rank: this.props.animalRank
+      rank: this.props.animalRank,
+      error: this.props.error
     }
   }
 
@@ -46,11 +47,19 @@ class FormRow extends React.Component {
     });
 
     // console.log(this.props)
-    const done = this.state.rank ? "done" : null
-    // console.log(done)
+    // const done = this.state.rank ? "done" : null
+    
+    const trProps = {}
+    if(this.state.error){
+      trProps.className = "error"
+    }
+    else if(this.state.rank){
+      trProps.className = "done"
+    }
     
     return (
-     <tr className={done}>
+    //  <tr className={done}>
+        <tr {...trProps}>
         <th>{this.props.animalName}</th>
         {cells}
       </tr>
@@ -59,3 +68,5 @@ class FormRow extends React.Component {
 }
 
 export default FormRow;
+
+

@@ -14,8 +14,7 @@ class MainPage extends React.Component {
         //a constructor that takes in one variable which is name and it's
         //creating a bunch of objects which are instances of that class
       }),
-      error: 'Ranks must be unique',
-      errorFlag: false
+      error: false
     };
   }
 
@@ -51,7 +50,7 @@ class MainPage extends React.Component {
 
       return (
         <FormRow
-          // errorFlag={this.state.errorFlag}
+          error={this.state.error}
           animalRank={animal.rank}
           selectButton={(updateRank) => {
             animal.setRank(updateRank)
@@ -68,7 +67,7 @@ class MainPage extends React.Component {
     
   
     let disabled = false
-    let error = false
+    let error = this.state.error
     const count = {}
     this.state.animals.forEach((animal) => {
       if(!animal.rank){  //disable the button if any rank is not selected
@@ -106,7 +105,7 @@ class MainPage extends React.Component {
             {rows}
           </tbody>
         </table>
-        <div>{error ? this.state.error : null}</div>
+        <div>{error ? 'Ranks must be unique' : null}</div>
         <input type="submit" disabled={disabled}  />{/*disabled is a prop of the input tag*/}
       </div>
     );
