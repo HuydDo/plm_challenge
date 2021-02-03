@@ -10,18 +10,19 @@ import _ from 'lodash';
 class FormRow extends React.Component {
   constructor(props){
     super(props)
-    this.state = {rank: this.props.animalRank}
+    this.state = {
+      rank: this.props.animalRank
+    }
   }
 
   //*if we receive new props and the animal props 
   //*doesn't match whats inside the component then 
   //*we should update the component
   componentDidUpdate(){
-    
     if(this.props.animalRank !== this.state.rank){
       this.setState({rank: this.props.animalRank})
+      // console.log(`rank is updated to:  ${this.state.rank}`)
     }
-
   }
 
   render() {
@@ -43,6 +44,8 @@ class FormRow extends React.Component {
         </td>
       );
     });
+
+    // console.log(this.props)
     const done = this.state.rank ? "done" : null
     // console.log(done)
     

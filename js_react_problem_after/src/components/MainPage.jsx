@@ -14,16 +14,44 @@ class MainPage extends React.Component {
         //a constructor that takes in one variable which is name and it's
         //creating a bunch of objects which are instances of that class
       }),
-      error: 'Ranks must be unique'
+      error: 'Ranks must be unique',
+      errorFlag: false
     };
   }
 
-
+  
   render() {
-    console.log('this.state.animal',this.state.animals)
+    // console.log('this.state.animal',this.state.animals)
+    const errCount = {}
+    // this.state.animals.forEach((animal) => {
+    //   if (animal.rank && errCount[animal.rank]){
+    //     errCount[animal.rank] += 1
+    //     return
+    //   }
+    //   errCount[animal.rank] = 1
+    // })
+
+    
+
     const rows = this.state.animals.map((animal) => {
+      // console.log(animal)
+      // if (animal.rank && errCount[animal.rank]){
+      //   errCount[animal.rank] += 1
+      //   return
+      // }
+      // errCount[animal.rank] = 1
+
+      // for (let prop in errCount){
+      //   if(errCount[prop] >=2 && prop){
+      //     // this.setState({       
+      //     //   errorFlag : true
+      //     // })
+      //   }
+      // }
+
       return (
         <FormRow
+          // errorFlag={this.state.errorFlag}
           animalRank={animal.rank}
           selectButton={(updateRank) => {
             animal.setRank(updateRank)
@@ -35,13 +63,34 @@ class MainPage extends React.Component {
       );
     });
 
+    //create headers
     const headers = _.range(1, 6).map((i) => <th key={`header-${i}`}>{i}</th>);
+    
+  
     let disabled = false
+    let error = false
+    const count = {}
     this.state.animals.forEach((animal) => {
-      if(!animal.rank){
+      if(!animal.rank){  //disable the button if any rank is not selected
         disabled = true
       }
+      if (animal.rank && count[animal.rank]){
+        count[animal.rank] += 1
+        return
+      }
+      count[animal.rank] = 1
     })
+
+    for (let prop in count){
+      if(count[prop] >=2 && prop){
+        error = true
+        // console.log(prop + " counted " + count[prop] + " times")
+      }
+       
+    }
+
+    // console.log('disabled:', disabled, 'error:', error)
+    // console.log(count)
 
     return (
       <div>
@@ -56,7 +105,7 @@ class MainPage extends React.Component {
             {rows}
           </tbody>
         </table>
-        <div>{this.state.error}</div>
+        <div>{error ? this.state.error : null}</div>
         <input type="submit" disabled={disabled} />{/*disabled is a prop of the input tag*/}
       </div>
     );
