@@ -84,6 +84,7 @@ class MainPage extends React.Component {
     for (let prop in count){
       if(count[prop] >=2 && prop){
         error = true
+        disabled = true
         // console.log(prop + " counted " + count[prop] + " times")
       }
        
@@ -106,7 +107,7 @@ class MainPage extends React.Component {
           </tbody>
         </table>
         <div>{error ? this.state.error : null}</div>
-        <input type="submit" disabled={disabled} />{/*disabled is a prop of the input tag*/}
+        <input type="submit" disabled={disabled}  />{/*disabled is a prop of the input tag*/}
       </div>
     );
   }
