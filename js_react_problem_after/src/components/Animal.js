@@ -12,7 +12,6 @@ class Animal {
   setRank = (updatedRank) => {   
     console.log("setting rank to", updatedRank)
     this.rank = updatedRank 
-    
   } 
   /*setting this rank to the argument
    making a function that is a class method that allows to update the rank

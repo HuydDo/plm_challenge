@@ -22,7 +22,6 @@ class FormRow extends React.Component {
   componentDidUpdate(){
     if(this.props.animalRank !== this.state.rank){
       this.setState({rank: this.props.animalRank})
-      // console.log(`rank is updated to:  ${this.state.rank}`)
     }
   }
 
@@ -46,9 +45,10 @@ class FormRow extends React.Component {
       );
     });
 
-    // console.log(this.props)
+    console.log(this.props)
     // const done = this.state.rank ? "done" : null
-    
+
+
     const trProps = {}
     if(this.state.error){
       trProps.className = "error"
@@ -58,8 +58,8 @@ class FormRow extends React.Component {
     }
     
     return (
-    //  <tr className={done}>
-        <tr {...trProps}>
+    //<tr className={done}>
+      <tr {...trProps}>
         <th>{this.props.animalName}</th>
         {cells}
       </tr>

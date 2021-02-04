@@ -10,9 +10,9 @@ class MainPage extends React.Component {
     this.state = {
       animals: ['panda','cat','capybara','iguana','muskrat'].map((name) => {
         return new Animal(name);
-        //instantiating an object of that class. animal is a class that has 
-        //a constructor that takes in one variable which is name and it's
-        //creating a bunch of objects which are instances of that class
+       /*  instantiating an object of that class. animal is a class that has 
+        a constructor that takes in one variable which is name and it's
+        creating a bunch of objects which are instances of that class */
       }),
       error: false
     };
@@ -20,34 +20,9 @@ class MainPage extends React.Component {
 
   
   render() {
-    // console.log('this.state.animal',this.state.animals)
-    const errCount = {}
-    // this.state.animals.forEach((animal) => {
-    //   if (animal.rank && errCount[animal.rank]){
-    //     errCount[animal.rank] += 1
-    //     return
-    //   }
-    //   errCount[animal.rank] = 1
-    // })
-
-    
-
+   
     const rows = this.state.animals.map((animal) => {
-      // console.log(animal)
-      // if (animal.rank && errCount[animal.rank]){
-      //   errCount[animal.rank] += 1
-      //   return
-      // }
-      // errCount[animal.rank] = 1
-
-      // for (let prop in errCount){
-      //   if(errCount[prop] >=2 && prop){
-      //     // this.setState({       
-      //     //   errorFlag : true
-      //     // })
-      //   }
-      // }
-
+     
       return (
         <FormRow
           error={this.state.error}
@@ -74,7 +49,7 @@ class MainPage extends React.Component {
         disabled = true
       }
       if (animal.rank && count[animal.rank]){
-        count[animal.rank] += 1
+        count[animal.rank] += 1 
         return
       }
       count[animal.rank] = 1
@@ -84,13 +59,10 @@ class MainPage extends React.Component {
       if(count[prop] >=2 && prop){
         error = true
         disabled = true
-        // console.log(prop + " counted " + count[prop] + " times")
       }
        
     }
 
-    // console.log('disabled:', disabled, 'error:', error)
-    // console.log(count)
 
     return (
       <div>
