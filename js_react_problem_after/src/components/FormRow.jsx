@@ -45,10 +45,10 @@ class FormRow extends React.Component {
       );
     });
 
-    console.log(this.props)
+    // console.log(this.props)
     // const done = this.state.rank ? "done" : null
 
-
+    // console.log(`error: ${this.state.error}`) 
     const trProps = {}
     if(this.state.error){
       trProps.className = "error"

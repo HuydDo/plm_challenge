@@ -20,10 +20,9 @@ class MainPage extends React.Component {
 
   
   render() {
-   
+    
     const rows = this.state.animals.map((animal) => {
-     
-      return (
+       return (
         <FormRow
           error={this.state.error}
           animalRank={animal.rank}
@@ -50,9 +49,11 @@ class MainPage extends React.Component {
       }
       if (animal.rank && count[animal.rank]){
         count[animal.rank] += 1 
+        console.log(`Animal rank ${animal.rank} was selected: ${count[animal.rank]} times.`)
         return
       }
       count[animal.rank] = 1
+      
     })
 
     for (let prop in count){
